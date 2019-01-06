@@ -1,0 +1,9 @@
+
+ng build --output-path www/
+
+ cordova platform add browser
+
+ cordova build android
+ cordova run android
+
+ cordova run browser
