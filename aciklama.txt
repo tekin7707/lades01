@@ -5,20 +5,20 @@ cordova build android
 cordova run android
 cordova run browser
 
-200	Success
-201 	Created
+-----
+git push origin master
+tekin7707
+Mt777777!.
+-----
 
-401	Unauthorized
-403	Forbidden
-404	Not Found
+-200	Success         -201 	Created
 
-500 	Internal Server Error
-501 	Not Implemented
-503 	Service Unavailable
+-401	Unauthorized    -403	Forbidden   -404	Not Found
+
+-500 	Internal Server Error   -501 	Not Implemented     -503 	Service Unavailable
 
 
 User
-
 lad	=>iddia
 ladItem	=>iddia se�ene�i
 ladAction=>hareket
