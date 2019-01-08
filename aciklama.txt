@@ -1,9 +1,62 @@
-
 ng build --output-path www/
+cordova platform add browser
 
- cordova platform add browser
+cordova build android
+cordova run android
+cordova run browser
 
- cordova build android
- cordova run android
+200	Success
+201 	Created
 
- cordova run browser
+401	Unauthorized
+403	Forbidden
+404	Not Found
+
+500 	Internal Server Error
+501 	Not Implemented
+503 	Service Unavailable
+
+
+User
+
+lad	=>iddia
+ladItem	=>iddia se�ene�i
+ladAction=>hareket
+
+�rnek:
+
+lad: 2018-2019 y�l� lig �ampiyonu hangi tak�m olur?
+Ba� Tarih: 01/03/2019
+Son Tarih: 10/03/2019
+Toplam Kredi : 500
+
+ladItem 1: Ba�ak�ehir 	rate : 1.4
+ladItem 2: Galatasaray	rate : 1.9
+ladItem 3: Be�ikta� 	rate : 2.0
+ladItem 4: Trabzon 	rate : 2.0
+ladItem 4: Kas�mpa�a 	rate : 3.0
+
+
+
+{
+    "status": 201,
+    "data": {
+        "_id": "5c33565c4e09e00e880897f7",
+        "userId": "5c31245cdf32b84b9cb4ebaf",
+        "name": "First Lad",
+        "caption": "First Lad Caption",
+        "startDate": "1977-06-03T00:00:00.000Z",
+        "endDate": "2018-12-21T00:00:00.000Z",
+        "ladValue": 100,
+        "oneLadMin": 1,
+        "oneLadMax": 100,
+        "state": 0,
+        "__v": 0
+    },
+    "message": "Created"
+}
+
+
+
+
+

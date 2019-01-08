@@ -1,4 +1,4 @@
-#Sun Jan 06 22:16:52 EET 2019
+#Tue Jan 08 22:20:41 EET 2019
 base.0=C\:\\works\\tekin\\lades01\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 renamed.0=classes.dex
 file.0=C\:\\works\\tekin\\lades01\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

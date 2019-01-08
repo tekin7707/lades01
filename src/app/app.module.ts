@@ -23,6 +23,7 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -42,7 +43,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatProgressBarModule
   ],
   declarations: [
     AppComponent,
@@ -52,9 +54,9 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
   ],
   providers: [
     {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthInterceptorService,
-      multi:true
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
     },
     AuthGuard
   ],

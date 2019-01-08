@@ -11,7 +11,7 @@ import { RequestResult, User } from '../models/dataModel';
 
 export class AuthService {// environment.SERVICE_BASE+'/user';
   // base_url = 'http://localhost:5001/user';
-  base_url = 'https://lades.herokuapp.com/user';
+  base_url = 'https://lades-backend.herokuapp.com/user';
   constructor(private httpClient: HttpClient) {
 
   }
@@ -109,9 +109,8 @@ export class AuthService {// environment.SERVICE_BASE+'/user';
 
   getLoginUser(): any {
     let temp = localStorage.getItem('ladesAuth');
-    if (temp) {
+    if (temp && temp!='undefined') {
       let userStroge = JSON.parse(temp);// as User;
-
       return userStroge;
     }
     else return null;

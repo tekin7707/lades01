@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Jan 06 22:16:53 EET 2019
+#Mon Jan 07 00:41:54 EET 2019
 122.file=C\:\\works\\tekin\\lades01\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\assets\\scss\\core\\_popups.scss
 60.set=ASSET
 129.file=C\:\\works\\tekin\\lades01\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\icon.png

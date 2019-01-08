@@ -119,17 +119,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
 /* harmony import */ var _layouts_admin_layout_admin_layout_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./layouts/admin-layout/admin-layout.component */ "./src/app/layouts/admin-layout/admin-layout.component.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _auth_login_login_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./auth/login/login.component */ "./src/app/auth/login/login.component.ts");
-/* harmony import */ var _auth_register_register_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./auth/register/register.component */ "./src/app/auth/register/register.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./guards/auth.guard */ "./src/app/guards/auth.guard.ts");
-/* harmony import */ var _services_auth_interceptor_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/auth-interceptor.service */ "./src/app/services/auth-interceptor.service.ts");
+/* harmony import */ var _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/progress-bar */ "./node_modules/@angular/material/esm5/progress-bar.es5.js");
+/* harmony import */ var _auth_login_login_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./auth/login/login.component */ "./src/app/auth/login/login.component.ts");
+/* harmony import */ var _auth_register_register_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./auth/register/register.component */ "./src/app/auth/register/register.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./guards/auth.guard */ "./src/app/guards/auth.guard.ts");
+/* harmony import */ var _services_auth_interceptor_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/auth-interceptor.service */ "./src/app/services/auth-interceptor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -155,7 +157,7 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_0__["BrowserAnimationsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"],
                 _components_components_module__WEBPACK_IMPORTED_MODULE_6__["ComponentsModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"],
                 _app_routing__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
@@ -163,21 +165,22 @@ var AppModule = /** @class */ (function () {
                     apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
                 }),
                 _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatInputModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatFormFieldModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatFormFieldModule"],
+                _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_11__["MatProgressBarModule"]
             ],
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
                 _layouts_admin_layout_admin_layout_component__WEBPACK_IMPORTED_MODULE_9__["AdminLayoutComponent"],
-                _auth_login_login_component__WEBPACK_IMPORTED_MODULE_11__["LoginComponent"],
-                _auth_register_register_component__WEBPACK_IMPORTED_MODULE_12__["RegisterComponent"],
+                _auth_login_login_component__WEBPACK_IMPORTED_MODULE_12__["LoginComponent"],
+                _auth_register_register_component__WEBPACK_IMPORTED_MODULE_13__["RegisterComponent"],
             ],
             providers: [
                 {
-                    provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HTTP_INTERCEPTORS"],
-                    useClass: _services_auth_interceptor_service__WEBPACK_IMPORTED_MODULE_15__["AuthInterceptorService"],
+                    provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HTTP_INTERCEPTORS"],
+                    useClass: _services_auth_interceptor_service__WEBPACK_IMPORTED_MODULE_16__["AuthInterceptorService"],
                     multi: true
                 },
-                _guards_auth_guard__WEBPACK_IMPORTED_MODULE_14__["AuthGuard"]
+                _guards_auth_guard__WEBPACK_IMPORTED_MODULE_15__["AuthGuard"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
@@ -232,7 +235,7 @@ var routes = [
     },
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'dashboard',
         pathMatch: 'full',
     },
     {
@@ -282,7 +285,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <div class=\"container\">\n        <br>\n        <div class=\"row\">\n            <div class=\"col-lg-4 col-md-3 col-sm-2\">\n            </div>\n            <div class=\"col-lg-4 col-md-6 sol-sm-8\">\n                <div class=\"card text-center\">\n                    <div class=\"card-header card-header-danger\">\n                        <h4 class=\"card-title\">Login</h4>\n                        <p class=\"card-category\">login to page</p>\n                    </div>\n                    <div class=\"card-body text-center\">\n                        <form #loginForm=\"ngForm\">\n                            <div class=\"row\">\n                                <div class=\"col-md-12\">\n                                    <mat-form-field >\n                                        <input matInput placeholder=\"Email address\" type=\"email\" name=\"email\" [(ngModel)]=\"email\">\n                                    </mat-form-field>\n                                </div>\n                            </div>\n                            <div class=\"row\">\n                                <div class=\"col-md-12\">\n                                    <mat-form-field >\n                                        <input matInput placeholder=\"Password\" type=\"password\" name=\"password\" ngModel>\n                                    </mat-form-field>\n                                </div>\n                            </div>\n                            <button mat-raised-button type=\"button\" (click)=\"login(loginForm)\" class=\"btn btn-danger pull-center\">Login</button>\n                            <div class=\"clearfix\"></div>\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</div>"
+module.exports = "<div class=\"container-fluid loading-div\">\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <mat-progress-bar mode=\"query\" *ngIf=\"loading\"></mat-progress-bar>\n        </div>\n    </div>\n</div>\n\n<div *ngIf=\"!loading\">\n    <div class=\"container\">\n        <br>\n        <div class=\"row\">\n            <div class=\"col-lg-4 col-md-3 col-sm-2\">\n            </div>\n            <div class=\"col-lg-4 col-md-6 sol-sm-8\">\n                <div class=\"card text-center\">\n                    <div class=\"card-header card-header-danger\">\n                        <h4 class=\"card-title\">Login</h4>\n                        <p class=\"card-category\">login to page</p>\n                    </div>\n                    <div class=\"card-body text-center\">\n                        <form #loginForm=\"ngForm\">\n                            <div class=\"row\">\n                                <div class=\"col-md-12\">\n                                    <mat-form-field>\n                                        <input matInput placeholder=\"Email address\" type=\"email\" name=\"email\"\n                                            [(ngModel)]=\"email\">\n                                    </mat-form-field>\n                                </div>\n                            </div>\n                            <div class=\"row\">\n                                <div class=\"col-md-12\">\n                                    <mat-form-field>\n                                        <input matInput placeholder=\"Password\" type=\"password\" name=\"password\" ngModel>\n                                    </mat-form-field>\n                                </div>\n                            </div>\n                            <button mat-raised-button type=\"button\" (click)=\"login(loginForm)\" class=\"btn btn-danger pull-center\">Login</button>\n                            <div class=\"clearfix\"></div>\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</div>"
 
 /***/ }),
 
@@ -293,7 +296,7 @@ module.exports = "<div>\n    <div class=\"container\">\n        <br>\n        <d
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".loading-div {\n  position: absolute;\n  margin: auto;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 20px;\n  border-radius: 3px;\n  z-index: 99; }\n"
 
 /***/ }),
 
@@ -309,7 +312,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! app/services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! app/services/auth.service */ "./src/app/services/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -357,11 +361,14 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(authService, route, router) {
+    function LoginComponent(location, authService, route, router) {
+        this.location = location;
         this.authService = authService;
         this.route = route;
         this.router = router;
+        this.loading = false;
         this.isLoading = true;
         this.email = '';
         this.password = '';
@@ -369,8 +376,35 @@ var LoginComponent = /** @class */ (function () {
         this.emailError = '';
         this.passwordError = '';
         this.showModal = false;
+        console.log(location);
+        this.user = this.authService.getLoginUser();
+        if (this.user)
+            this.router.navigate(['dashboard']);
     }
     LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent.prototype.showNotification = function (type, message) {
+        $.notify({
+            icon: "notifications",
+            message: message
+        }, {
+            type: type,
+            timer: 1000,
+            placement: {
+                from: 'top',
+                align: 'right'
+            },
+            template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
+                '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
+                '<i class="material-icons" data-notify="icon">notifications</i> ' +
+                '<span data-notify="title">{1}</span> ' +
+                '<span data-notify="message">{2}</span>' +
+                '<div class="progress" data-notify="progressbar">' +
+                '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                '</div>' +
+                '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                '</div>'
+        });
     };
     LoginComponent.prototype.login = function (form) {
         return __awaiter(this, void 0, void 0, function () {
@@ -378,13 +412,23 @@ var LoginComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        this.loading = true;
                         this.email = form.value.email;
                         this.password = form.value.password;
                         return [4 /*yield*/, this.authService.login(this.email, this.password)];
                     case 1:
                         r = _a.sent();
-                        console.log(r);
-                        this.router.navigate(['dashboard']);
+                        if (r.status == 200) {
+                            this.user = r.data;
+                            console.log(r);
+                            this.showNotification('success', 'Success');
+                            this.router.navigate(['dashboard']);
+                        }
+                        else {
+                            this.loading = false;
+                            this.showNotification('danger', r.message);
+                            console.log(r);
+                        }
                         return [2 /*return*/];
                 }
             });
@@ -396,7 +440,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/auth/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.scss */ "./src/app/auth/login/login.component.scss")]
         }),
-        __metadata("design:paramtypes", [app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"], app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -906,7 +950,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"logo\">\n    <a href=\"https://www.creative-tim.com\" class=\"simple-text\">\n        <div class=\"logo-img\">\n            <img src=\"/assets/img/angular2-logo-red.png\" />\n        </div>\n        Creative Tim\n    </a>\n</div>\n<div class=\"sidebar-wrapper\">\n    <div *ngIf=\"isMobileMenu()\">\n        <form class=\"navbar-form\">\n            <span class=\"bmd-form-group\">\n                <div class=\"input-group no-border\">\n                    <input type=\"text\" value=\"\" class=\"form-control\" placeholder=\"Search...\">\n                    <button mat-raised-button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n                        <i class=\"material-icons\">search</i>\n                        <div class=\"ripple-container\"></div>\n                    </button>\n                </div>\n            </span>\n        </form>\n\n        <!--Login-->\n        <ul class=\"nav navbar-nav nav-mobile-menu\" *ngIf=\"user\">\n\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\n                    <i class=\"material-icons\">dashboard</i>\n                    <p>\n                        <span class=\"d-lg-none d-md-block\">Stats</span>\n                    </p>\n                </a>\n            </li>\n            <li class=\"nav-item dropdown\">\n                <a class=\"nav-link\" href=\"#pablo\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\n                    aria-expanded=\"false\">\n                    <i class=\"material-icons\">notifications</i>\n                    <span class=\"notification\">5</span>\n                    <p>\n                        <span class=\"d-lg-none d-md-block\">Some Actions side</span>\n                    </p>\n                </a>\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownMenuLink\">\n                    <a class=\"dropdown-item\" href=\"#\">Sidebar Here!</a>\n                    <a class=\"dropdown-item\" href=\"#\">You're now friend with Andrew</a>\n                    <a class=\"dropdown-item\" href=\"#\">Another Notification</a>\n                    <a class=\"dropdown-item\" href=\"#\">Another One</a>\n                </div>\n            </li>\n            <li class=\"nav-item dropdown\">\n                <a class=\"nav-link\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\n                    aria-expanded=\"false\" style=\"cursor:pointer;\">\n                    <i class=\"material-icons\">person</i>\n                    <p>\n                        <span class=\"d-lg-none d-md-block\">Account x1</span>\n                    </p>\n                </a>\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownMenuLink\">\n                    <a class=\"dropdown-item\" [routerLink]=\"['/user-profile']\">Profile</a>\n                    <a class=\"dropdown-item\" (click)=\"logout()\">Logout</a>\n                </div>\n            </li>\n        </ul>\n        <!--No Login-->\n        <ul class=\"nav navbar-nav nav-mobile-menu\" *ngIf=\"!user\">\n\n\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/login']\">\n                    <i class=\"material-icons\">person</i>\n                    <p>\n                        <span class=\"d-lg-none d-md-block\">Account x2</span>\n                    </p>\n                </a>\n            </li>\n        </ul>\n\n\n    </div>\n    <ul class=\"nav\">\n        <li routerLinkActive=\"active\" *ngFor=\"let menuItem of menuItems\" class=\"{{menuItem.class}} nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"[menuItem.path]\">\n                <i class=\"material-icons\">{{menuItem.icon}}</i>\n                <p>{{menuItem.title}}</p>\n            </a>\n        </li>\n    </ul>\n</div>"
+module.exports = "<div class=\"logo\">\n    <a href=\"https://www.creative-tim.com\" class=\"simple-text\">\n        <div class=\"logo-img\">\n            <img src=\"/assets/img/angular2-logo-red.png\" />\n        </div>\n        Creative Tim\n    </a>\n</div>\n<div class=\"sidebar-wrapper\">\n    <div *ngIf=\"isMobileMenu()\">\n        <form class=\"navbar-form\">\n            <span class=\"bmd-form-group\">\n                <div class=\"input-group no-border\">\n                    <input type=\"text\" value=\"\" class=\"form-control\" placeholder=\"Search...\">\n                    <button mat-raised-button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n                        <i class=\"material-icons\">search</i>\n                        <div class=\"ripple-container\"></div>\n                    </button>\n                </div>\n            </span>\n        </form>\n\n        <!--Login-->\n        <ul class=\"nav navbar-nav nav-mobile-menu\" *ngIf=\"user\">\n\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\n                    <i class=\"material-icons\">dashboard</i>\n                    <p>\n                        <span class=\"d-lg-none d-md-block\">Stats</span>\n                    </p>\n                </a>\n            </li>\n            <li class=\"nav-item dropdown\">\n                <a class=\"nav-link\" href=\"#pablo\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\n                    aria-expanded=\"false\">\n                    <i class=\"material-icons\">notifications</i>\n                    <span class=\"notification\">5</span>\n                    <p>\n                        <span class=\"d-lg-none d-md-block\">Some Actions side</span>\n                    </p>\n                </a>\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownMenuLink\">\n                    <a class=\"dropdown-item\" href=\"#\">Sidebar Here!</a>\n                    <a class=\"dropdown-item\" href=\"#\">You're now friend with Andrew</a>\n                    <a class=\"dropdown-item\" href=\"#\">Another Notification</a>\n                    <a class=\"dropdown-item\" href=\"#\">Another One</a>\n                </div>\n            </li>\n            <li class=\"nav-item dropdown\">\n                <a class=\"nav-link\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\n                    aria-expanded=\"false\" style=\"cursor:pointer;\">\n                    <i class=\"material-icons\">person</i>\n                    <p>\n                        <span class=\"d-lg-none d-md-block\">Account</span>\n                    </p>\n                </a>\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownMenuLink\">\n                    <a class=\"dropdown-item\" [routerLink]=\"['/user-profile']\">Profile</a>\n                    <a class=\"dropdown-item\" (click)=\"logout()\">Logout</a>\n                </div>\n            </li>\n        </ul>\n        <!--No Login-->\n        <ul class=\"nav navbar-nav nav-mobile-menu\" *ngIf=\"!user\">\n\n\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/login']\">\n                    <i class=\"material-icons\">person</i>\n                    <p>\n                        <span class=\"d-lg-none d-md-block\">Account</span>\n                    </p>\n                </a>\n            </li>\n        </ul>\n\n\n    </div>\n    <ul class=\"nav\">\n        <li routerLinkActive=\"active\" *ngFor=\"let menuItem of menuItems\" class=\"{{menuItem.class}} nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"[menuItem.path]\">\n                <i class=\"material-icons\">{{menuItem.icon}}</i>\n                <p>{{menuItem.title}}</p>\n            </a>\n        </li>\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -1286,7 +1330,7 @@ var AuthService = /** @class */ (function () {
     function AuthService(httpClient) {
         this.httpClient = httpClient;
         // base_url = 'http://localhost:5001/user';
-        this.base_url = 'https://lades.herokuapp.com/user';
+        this.base_url = 'https://lades-backend.herokuapp.com/user';
     }
     AuthService.prototype.login = function (u, p) {
         return __awaiter(this, void 0, void 0, function () {
@@ -1408,7 +1452,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.getLoginUser = function () {
         var temp = localStorage.getItem('ladesAuth');
-        if (temp) {
+        if (temp && temp != 'undefined') {
             var userStroge = JSON.parse(temp); // as User;
             return userStroge;
         }
