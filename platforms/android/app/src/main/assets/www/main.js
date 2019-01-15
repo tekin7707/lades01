@@ -68,28 +68,97 @@ module.exports = "\n<router-outlet></router-outlet>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(_r) {
+        var _this = this;
+        this._r = _r;
         this.title = 'app';
+        this.name = 'Angular2';
+        this._r.events.subscribe(function (event) {
+            if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["RoutesRecognized"]) {
+                _this.name = event.url;
+                console.log('navigated to:', event.url);
+                console.log('route state', event.state);
+                console.log('');
+            }
+            else if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]) {
+                console.log('NavigationEnd');
+                console.log(event);
+                // if u dont need the state, you could even use this event-type..
+            }
+        });
     }
+    AppComponent.prototype.showNotification = function (type, message) {
+        $.notify({
+            icon: "notifications",
+            message: message
+        }, {
+            type: type,
+            timer: 2000,
+            placement: {
+                from: 'top',
+                align: 'right'
+            },
+            template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
+                '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
+                '<i class="material-icons" data-notify="icon">notifications</i> ' +
+                '<span data-notify="title">{1}</span> ' +
+                '<span data-notify="message">{2}</span>' +
+                '<div class="progress" data-notify="progressbar">' +
+                '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                '</div>' +
+                '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                '</div>'
+        });
+    };
     AppComponent.prototype.ngOnInit = function () {
+        console.log('--> appComponent init');
         document.addEventListener("deviceready", function () {
-            alert(device.platform);
+            console.log('deviceready');
+            console.log(device.platform);
         }, false);
+        document.addEventListener("backbutton", function (e) {
+            console.log('backbutton');
+            alert(this.name);
+            if (this.name == '/dashboard') {
+                // e.preventDefault();
+                navigator.app.exitApp();
+            }
+            else {
+                navigator.app.backHistory();
+            }
+            // e.preventDefault();
+            // navigator.app.exitApp();
+            // alert($.mobile.activePage);
+            // if ($.mobile.activePage.is('#homepage')) {
+            //   e.preventDefault();
+            //   navigator.app.exitApp();
+            // }
+            // else {
+            //   navigator.app.backHistory()
+            // }
+        }, false);
+        console.log('<-- appComponent init');
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], AppComponent);
     return AppComponent;
 }());

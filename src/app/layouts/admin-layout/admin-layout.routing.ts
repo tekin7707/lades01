@@ -9,6 +9,8 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AuthGuard } from 'app/guards/auth.guard';
+import { LadListComponent } from 'app/lad/lad-list/lad-list.component';
+import { LadDetailComponent } from 'app/lad/lad-detail/lad-detail.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -62,4 +64,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps', component: MapsComponent },
     { path: 'notifications', component: NotificationsComponent },
     { path: 'upgrade', component: UpgradeComponent },
+    { path: 'ladlist', component: LadListComponent },
+    { path: 'lad-detail/:mode/:id', component: LadDetailComponent },
 ];

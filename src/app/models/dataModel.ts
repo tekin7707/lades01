@@ -25,6 +25,8 @@ export class ladActionModel{
 
 
 export class ladItemModel{
+    _id:string;
+    masterId:string;
     name: string;
     caption: string;
     rate : number;
@@ -37,13 +39,20 @@ olmal� -> Kullan�c� kredisi => oneLadMax * max(ladItemModel.rate)
 */
 
 export class ladModel{
-    name: string;
-    caption: string;
-    startDate:Date;
-    endDate:Date;
-    ladValue:number;
-    oneLadMin:number;
-    oneLadMax:number;
-    state:number;
+    _id?:string;
+    userId?:number;
+    name?: string;
+    caption?: string;
+    startDate?:Date;
+    endDate?:Date;
+    ladValue?:number;
+    oneLadMin?:number;
+    oneLadMax?:number;
+    state?:number;
 };
+
+export class ladAllModel{
+    lad:ladModel;
+    ladItems:ladItemModel[];
+}
 

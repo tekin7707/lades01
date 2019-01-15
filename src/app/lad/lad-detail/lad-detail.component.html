@@ -1,0 +1,170 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title mt-0"> </h4>
+            <p class="card-category" *ngIf="ladAll"> {{ladAll.lad.name}} ({{ladItemMode}})</p>
+          </div>
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input id="name" [(ngModel)]="ladAll.lad.name" name="name" matInput placeholder="name" type="text">
+                </mat-form-field>
+              </div>
+              <div class="col-md-8">
+                <mat-form-field class="example-full-width">
+                  <input id="caption" [(ngModel)]="ladAll.lad.caption" name="caption" matInput placeholder="caption"
+                    type="text">
+                </mat-form-field>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input id="ladValue" [(ngModel)]="ladAll.lad.ladValue" name="ladValue" matInput placeholder="Value"
+                    type="text">
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input id="oneLadMin" [(ngModel)]="ladAll.lad.oneLadMin" name="oneLadMin" matInput placeholder="Min Value"
+                    type="text">
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input id="oneLadMax" [(ngModel)]="ladAll.lad.oneLadMax" name="oneLadMax" matInput placeholder="Max Value"
+                    type="text">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="picker1" id="startDate" [(ngModel)]="ladAll.lad.startDate" name="startDate"
+                    placeholder="Başlangıç Tarihi">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="picker2" id="endDate" [(ngModel)]="ladAll.lad.endDate" name="endDate"
+                    placeholder="Bitiş Tarihi">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <button mat-raised-button type="button" (click)="run()" class="btn btn-danger pull-right">Update
+                  Lad</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Lad Item -->
+    <div class="row" *ngIf="ladItemMode!='browse'">
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width">
+          <input id="ladItemCaption" [(ngModel)]="ladItem.caption" name="ladItemCaption" matInput placeholder="Caption"
+            type="text">
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <input id="ladItemRate" [(ngModel)]="ladItem.rate" name="ladItemRate" matInput placeholder="Rate" type="text">
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <input id="ladItemState" [(ngModel)]="ladItem.state" name="ladItemState" matInput placeholder="State" type="text">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="ladItemMode!='browse'">
+      <div class="col-md-12" style="border:1px solid; vertical-align:middle;">
+          <span *ngIf="ladItemMode=='delete'" style="font-size: 100%; color:red;">Item will delete. Are you sure?</span>
+          <button mat-raised-button type="button" (click)="resetItem()" class="btn btn-danger pull-right">Reset</button>
+          <button mat-raised-button type="button" (click)="runItem()" class="btn btn-danger pull-right">Run</button>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="">
+                  <th>
+                    Caption
+                  </th>
+                  <th>
+                    Value
+                  </th>
+                  <th>
+                    State
+                  </th>
+                  <th>
+                    <i class="material-icons icon-button" (click)="prepareLadItemInsert()">add</i>
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of ladAll.ladItems">
+                    <td>
+                      <!-- <mat-form-field class="example-full-width">
+                        <input id="name" [(ngModel)]="item.caption" name="name" matInput type="text">
+                      </mat-form-field> -->
+                      {{item.caption}}
+                    </td>
+                    <td>
+                      {{item.rate}}
+                    </td>
+                    <td>
+                      {{item.state}}
+                    </td>
+                    <td class="text-right">
+                      <i class="material-icons icon-button" (click)="prepareLadItemEdit(item)">code</i>
+                      &nbsp;
+                      <i class="material-icons icon-button-del" (click)="prepareLadItemDelete(item)">delete</i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tim-typo">
+        <h2>
+          <small>Use "small" tag for the headers</small>
+        </h2>
+      </div>
+      <div class="tim-typo">
+        <span class="tim-note">Quote</span>
+        <blockquote class="blockquote">
+          <small>
+            Kanye West, Musician
+          </small>
+        </blockquote>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0"> </h4>
+                        <p class="card-category"> Lad Listeniz</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Caption
+                                    </th>
+                                    <th>
+                                        Value
+                                    </th>
+                                    <th>
+                                        Dates
+                                    </th>
+                                    <th>
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let lad of lads">
+                                        <td>
+                                            {{lad.caption}}
+                                        </td>
+                                        <td>
+                                            {{lad.ladValue}}
+                                        </td>
+                                        <td>
+                                            {{lad.startDate|date:'dd/MM/yyyy'}}
+                                            -
+                                            {{lad.endDate|date:'dd/MM/yyyy'}}
+                                        </td>
+                                        <td class="text-right">
+                                            <i class="material-icons icon-button" routerLink="../lad-detail/edit/{{lad._id}}">code</i>
+                                            &nbsp;
+                                            <i class="material-icons icon-button-del" routerLink="./../lad-detail/del/{{lad._id}}">delete</i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

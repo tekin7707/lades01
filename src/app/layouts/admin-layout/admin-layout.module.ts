@@ -11,15 +11,19 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-
+import { LadListComponent } from 'app/lad/lad-list/lad-list.component';
 import {
   MatButtonModule,
   MatInputModule,
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
+import { LadDetailComponent } from 'app/lad/lad-detail/lad-detail.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -31,6 +35,9 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
   declarations: [
     DashboardComponent,
@@ -41,6 +48,8 @@ import {
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    LadListComponent,
+    LadDetailComponent
   ]
 })
 

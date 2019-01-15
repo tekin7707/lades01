@@ -50,7 +50,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   providers: [
     {
