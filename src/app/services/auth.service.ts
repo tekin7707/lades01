@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestResult, User } from '../models/dataModel';
+import { environment } from 'environments/environment';
 declare var $: any;
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AuthService {// environment.SERVICE_BASE+'/user';
-  // base_url = 'http://localhost:5001/user';
+export class AuthService {
   base_url = 'https://lades-backend.herokuapp.com/user';
+  // base_url = 'http://localhost:5001/user';
   constructor(private httpClient: HttpClient) {
+    this.base_url = environment.SERVICE_BASE + '/lad';
+    console.log('Base Service: ', this.base_url);
 
   }
 
@@ -38,7 +41,7 @@ export class AuthService {// environment.SERVICE_BASE+'/user';
     return r;
   }
 
-  async register(u:User) {
+  async register(u: User) {
     let r: RequestResult = { status: 0, message: '' };
     let url: string = this.base_url + '/register';
     console.log(url);
@@ -63,7 +66,7 @@ export class AuthService {// environment.SERVICE_BASE+'/user';
     return r;
   }
 
-  async update(u:User) {
+  async update(u: User) {
     let r: RequestResult = { status: 0, message: '' };
     let url: string = this.base_url + '/update';
     console.log(url);
@@ -89,25 +92,25 @@ export class AuthService {// environment.SERVICE_BASE+'/user';
   }
 
 
-  async getUserList(cid){
+  async getUserList(cid) {
     let r: RequestResult = { status: 200, message: '' };
-    await this.httpClient.get(this.base_url+'/getAll').toPromise()
-    .then(
-      (d) => {
-        r.data = d;
-        console.log(d);
-      }
-    )
-    .catch((err) => {
-      r.status = err.status;
-      r.message = err.statusText;
-    });
+    await this.httpClient.get(this.base_url + '/getAll').toPromise()
+      .then(
+        (d) => {
+          r.data = d;
+          console.log(d);
+        }
+      )
+      .catch((err) => {
+        r.status = err.status;
+        r.message = err.statusText;
+      });
     return r;
   }
 
   getLoginUser(): any {
     let temp = localStorage.getItem('ladesAuth');
-    if (temp && temp!='undefined') {
+    if (temp && temp != 'undefined') {
       let userStroge = JSON.parse(temp);// as User;
       return userStroge;
     }
@@ -165,6 +168,6 @@ export class AuthService {// environment.SERVICE_BASE+'/user';
           '<a href="{3}" target="{4}" data-notify="url"></a>' +
           '</div>'
       });
-  }    
+  }
 
 }

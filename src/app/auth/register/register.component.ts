@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
     }
 
     if (this.registerError == '') {
-      let user: User = { email: this.email, password: this.password1 };
+      let user: User = { _id:'', email: this.email, password: this.password1 };
 
       let r = await this.authService.register(user);
       if (r.status == 201) {

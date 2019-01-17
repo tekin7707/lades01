@@ -16,11 +16,12 @@ export class LadDetailComponent implements OnInit {
   ladItemMode: string = 'browse';
   user: User;
   id: string = '';
-  ladItem: ladItemModel = { _id: '', masterId:'', name: '', caption: '', rate: 1, state: 1 };
+  ladItem: ladItemModel = { _id: '', masterId: '', name: '', caption: '', rate: 1, state: 1 };
+  // lad: ladModel = { _id: '', ladValue: 100, oneLadMin: 1, oneLadMax: 100, name: '', caption: '', startDate: new Date(), endDate: new Date() }
   silOnay: boolean = false;
   islemCaption: string = "";
   ladAll = {
-    lad: { _id: '', ladValue: 100, oneLadMin: 1, oneLadMax: 100, name: 'Test', caption: 'Test', startDate: new Date(), endDate: new Date() },
+    lad: { _id: '', userId: '', ladValue: 100, oneLadMin: 1, oneLadMax: 100, name: 'Test', caption: 'Test', startDate: new Date(), endDate: new Date() },
     ladItems: []
   };
 
@@ -37,8 +38,8 @@ export class LadDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.mode = params["mode"];
       this.id = params["recId"];
-      if (this.mode == 'add') {
-        this.islemCaption = "Yeni Kayıt";
+      if (this.mode == 'insert') {
+        this.islemCaption = "New Record";
       }
       else {
         this.id = params["id"];
@@ -51,7 +52,10 @@ export class LadDetailComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authService.getLoginUser();
-    this.getLad();
+    this.ladAll.lad.userId = this.user._id;
+    if (this.mode == 'browse' ||this.mode == 'edit' || this.mode == 'delete') this.getLad();
+    console.log(this.ladAll);
+    
   }
 
   async getLad() {
@@ -60,7 +64,8 @@ export class LadDetailComponent implements OnInit {
     if (r.status == 200) {
       this.ladAll = r.data.data;
       console.log(r);
-      this.authService.showNotification('success', 'Success');
+      // this.authService.showNotification('success', 'Success');
+      this.loading = false;
     }
     else {
       this.loading = false;
@@ -69,13 +74,84 @@ export class LadDetailComponent implements OnInit {
     }
   }
 
-  run() {
-
+  reset() {
+    window.history.back();
   }
 
+  run() {
+    if (this.mode == 'insert') {
+      this.insertLad();
+    } else if (this.mode == 'edit') {
+      this.updateLad();
+    } else if (this.mode == 'delete') {
+      this.deleteLad();
+    }
+  }
+
+  async insertLad() {
+    console.log('insertLad');
+    this.loading = true;
+    this.ladAll.lad._id = null;
+    let r = await this.ladService.insertLad(this.ladAll.lad);
+    if (r.status == 200 || r.status == 201) {
+      console.log('insertLad %c inserted Data -->', 'color:green;');
+      console.log(r);
+      this.authService.showNotification('success', 'Success');
+      setTimeout(() => {
+        window.history.back();
+      }, 100);
+    }
+    else {
+      this.loading = false;
+      this.authService.showNotification('danger', r.message);
+      console.log('insertLad %c Error -->', 'color:red;');
+      console.log(r);
+    }
+
+  }
+  async updateLad() {
+    console.log('updateLad');
+    this.loading = true;
+    let r = await this.ladService.updateLad(this.ladAll.lad);
+    if (r.status == 200) {
+      console.log('updateLad %c Updated Data -->', 'color:green;');
+      console.log(r);
+      this.authService.showNotification('success', 'Success');
+      this.mode = 'browse';
+      this.loading = false;
+      // window.history.back();
+    }
+    else {
+      this.loading = false;
+      this.authService.showNotification('danger', r.message);
+      console.log('updateLad %c Error -->', 'color:red;');
+      console.log(r);
+    }
+
+  }
+  async deleteLad() {
+    console.log('deleteLad');
+    this.loading = true;
+    let r = await this.ladService.deleteLad(this.ladAll.lad._id);
+    if (r.status == 200) {
+      console.log('deleteLad %c Deleted Data -->', 'color:green;');
+      console.log(r);
+      window.history.back();
+    }
+    else {
+      this.loading = false;
+      this.authService.showNotification('danger', r.message);
+      console.log('deletedLadItem %c Error -->', 'color:red;');
+      console.log(r);
+    }
+  }
+
+
   prepareLadItemEdit(_ladItem) {
+    this.loading = true;
     this.ladItemMode = 'edit';
     this.ladItem = _ladItem;
+    this.loading = false;
   }
 
   prepareLadItemDelete(_ladItem) {
@@ -85,11 +161,13 @@ export class LadDetailComponent implements OnInit {
 
   prepareLadItemInsert(_ladItem) {
     this.ladItemMode = 'insert';
-    this.ladItem = { masterId:this.ladAll.lad._id, _id: '', name: '', caption: '', rate: 1, state: 0 };
+    this.ladItem = { masterId: this.ladAll.lad._id, _id: '', name: '', caption: '', rate: 1, state: 0 };
+    console.log(this.ladItem);
+    console.log(this.ladAll);
   }
 
   resetItem() {
-    this.ladItem = { _id: '', masterId:'', name: '', caption: '', rate: 1, state: 0 };
+    this.ladItem = { _id: '', masterId: '', name: '', caption: '', rate: 1, state: 0 };
     this.ladItemMode = 'browse';
   }
 
@@ -107,11 +185,13 @@ export class LadDetailComponent implements OnInit {
     console.log('insertLadItem');
     this.loading = true;
     let r = await this.ladService.insertLadItem(this.ladItem);
-    if (r.status == 200 || r.status == 201 ) {
-      this.ladAll.ladItems.push(r.data.data);
+    if (r.status == 200 || r.status == 201) {
+      await this.getLad();
       console.log('insertLadItem %c inserted Data -->', 'color:green;');
       console.log(r);
       this.authService.showNotification('success', 'Success');
+      this.ladItemMode = 'browse';
+      this.loading = false;
     }
     else {
       this.loading = false;
@@ -129,6 +209,8 @@ export class LadDetailComponent implements OnInit {
       console.log('updateLadItem %c Updated Data -->', 'color:green;');
       console.log(r);
       this.authService.showNotification('success', 'Success');
+      this.ladItemMode = 'browse';
+      this.loading = false;
     }
     else {
       this.loading = false;
@@ -149,7 +231,9 @@ export class LadDetailComponent implements OnInit {
       if (lii > -1) {
         this.ladAll.ladItems.splice(lii, 1);
         this.authService.showNotification('success', 'Success');
+        this.ladItemMode = 'browse';
       }
+      this.loading = false;
     }
     else {
       this.loading = false;
@@ -158,6 +242,4 @@ export class LadDetailComponent implements OnInit {
       console.log(r);
     }
   }
-
-
 }

@@ -20,9 +20,11 @@ import {
   MatTooltipModule,
   MatSelectModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatProgressBarModule
 } from '@angular/material';
 import { LadDetailComponent } from 'app/lad/lad-detail/lad-detail.component';
+import { LadActionComponent } from 'app/lad/lad-action/lad-action.component';
 
 @NgModule({
   imports: [
@@ -36,8 +38,8 @@ import { LadDetailComponent } from 'app/lad/lad-detail/lad-detail.component';
     MatSelectModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule
-
+    MatNativeDateModule,
+    MatProgressBarModule
   ],
   declarations: [
     DashboardComponent,
@@ -49,7 +51,8 @@ import { LadDetailComponent } from 'app/lad/lad-detail/lad-detail.component';
     NotificationsComponent,
     UpgradeComponent,
     LadListComponent,
-    LadDetailComponent
+    LadDetailComponent,
+    LadActionComponent
   ]
 })
 

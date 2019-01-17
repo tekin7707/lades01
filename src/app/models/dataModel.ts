@@ -5,6 +5,7 @@ export class RequestResult {
 }
 
 export class User {
+    _id :string;
     email: string;
     password: string;
     firstName?: string;
@@ -40,7 +41,7 @@ olmal� -> Kullan�c� kredisi => oneLadMax * max(ladItemModel.rate)
 
 export class ladModel{
     _id?:string;
-    userId?:number;
+    userId?:string;
     name?: string;
     caption?: string;
     startDate?:Date;

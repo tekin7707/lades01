@@ -56,7 +56,10 @@ export class LadListComponent implements OnInit {
     if (r.status == 200) {
       this.lads = r.data.data;
       console.log(r);
-      this.showNotification('success', 'Success');
+      // this.showNotification('success', 'Success');
+      setTimeout(() => {
+        this.loading=false;
+      }, 100);
       }
     else {
       this.loading=false;
@@ -64,4 +67,6 @@ export class LadListComponent implements OnInit {
       console.log(r);
     }
   }
+
+  
 }

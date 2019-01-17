@@ -1,0 +1,60 @@
+<div class="container-fluid loading-div" *ngIf="loading">
+  <div class="row">
+    <div class="col-md-12 loading-bar">
+      <mat-progress-bar mode="query"></mat-progress-bar>
+    </div>
+  </div>
+</div>
+<div class="main-content" *ngIf="!loading">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h4 class="card-title">{{ladAll.lad.caption}} (Price : {{ladAll.lad.ladValue}})</h4>
+            <p class="card-category">min-max ({{ladAll.lad.oneLadMin}} - {{ladAll.lad.oneLadMax}})
+              / Date ({{ladAll.lad.startDate|date:'dd/MM/yyyy'}} - {{ladAll.lad.endDate|date:'dd/MM/yyyy'}})
+            </p>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="profile">
+                <table class="table">
+                  <tbody>
+                    <tr *ngFor="let lad of ladAll.ladItems" (click)="selectRow(lad)">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="state" [(ngModel)]="lad.state">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>{{lad.caption}}</td>
+                      <td>{{lad.ladValue}}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="2">
+                        <mat-form-field class="example-full-width pull-right text-right">
+                          <input id="ladActionValue" [(ngModel)]="ladAction.value" name="ladActionValue" matInput placeholder="Value"
+                            type="text">
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <button mat-raised-button type="button" (click)="selectThis()" class="btn btn-danger pull-right">Select</button>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

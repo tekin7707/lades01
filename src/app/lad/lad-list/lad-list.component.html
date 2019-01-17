@@ -1,4 +1,11 @@
-<div class="main-content">
+<div class="container-fluid loading-div" *ngIf="loading">
+    <div class="row">
+        <div class="col-md-12 loading-bar">
+            <mat-progress-bar mode="query"></mat-progress-bar>
+        </div>
+    </div>
+</div>
+<div class="main-content" *ngIf="!loading">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -21,10 +28,11 @@
                                         Dates
                                     </th>
                                     <th>
+                                        <i class="material-icons icon-button pull-right color-red" routerLink="../lad-detail/insert/0">add</i>
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let lad of lads">
+                                    <tr *ngFor="let lad of lads" routerLink="../lad-detail/browse/{{lad._id}}">
                                         <td>
                                             {{lad.caption}}
                                         </td>
@@ -39,7 +47,7 @@
                                         <td class="text-right">
                                             <i class="material-icons icon-button" routerLink="../lad-detail/edit/{{lad._id}}">code</i>
                                             &nbsp;
-                                            <i class="material-icons icon-button-del" routerLink="./../lad-detail/del/{{lad._id}}">delete</i>
+                                            <i class="material-icons icon-button-del" routerLink="./../lad-detail/delete/{{lad._id}}">delete</i>
                                         </td>
                                     </tr>
                                 </tbody>
